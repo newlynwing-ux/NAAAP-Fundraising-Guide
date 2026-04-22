@@ -5,16 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NAAAP Board Member Fundraising Guide</title>
 <style>
-  /* ── NAAAP Brand System ──────────────────────────────────────────
-     Primary Red:   PMS 1807  #AF292E
-     Primary Gray:  PMS 424C  #808284  (≈ 70% black)
-     Light Gray:    PMS 428   #C8C9C7  (≈ 20% black)
-     White:         #FFFFFF
-     Near-black:    #2B2B2B   (body text)
-     Accent tones pulled from approved chapter palette (pp.11-12)
-     Typography:    Arial / Helvetica, sans-serif  (web stand-in for HelveticaNeue LT 65)
-  ───────────────────────────────────────────────────────────────── */
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -31,22 +21,22 @@
     --border:       #C8C9C7;
     --shadow-sm:    0 1px 4px rgba(0,0,0,0.10);
     --shadow-md:    0 3px 12px rgba(0,0,0,0.13);
-    --shadow-lg:    0 6px 24px rgba(0,0,0,0.16);
     --radius:       3px;
-
-    /* Chapter accent colors from brand palette pp.11-12 */
-    --teal:         #004151;   /* PMS 548  */
+    --teal:         #004151;
     --teal-light:   #e0eaec;
     --teal-mid:     #7aaab4;
-    --navy:         #003479;   /* PMS 294  */
+    --navy:         #003479;
     --navy-light:   #e0e7f3;
     --navy-mid:     #7a9acc;
-    --amber:        #C94D00;   /* PMS 1525 */
+    --amber:        #C94D00;
     --amber-light:  #faeee6;
     --amber-mid:    #e4a882;
-    --green:        #417630;   /* PMS 364  */
+    --green:        #417630;
     --green-light:  #e8f0e5;
     --green-mid:    #9dbe94;
+    --placeholder:  #6b5e00;
+    --placeholder-light: #fdf8e1;
+    --placeholder-mid:   #d4c46a;
   }
 
   body {
@@ -60,142 +50,75 @@
 
   /* ── Header ─────────────────────────────────────────────────── */
   .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 44px;
-    padding-bottom: 32px;
+    display: flex; flex-direction: column; align-items: center;
+    margin-bottom: 44px; padding-bottom: 28px;
     border-bottom: 2px solid var(--red);
-    position: relative;
   }
-  .naaap-logo {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-    margin-bottom: 16px;
+  .logo-area { margin-bottom: 18px; }
+  .logo-area img { max-height: 72px; width: auto; display: block; }
+  /* Fallback text logo shown if image not loaded */
+  .logo-fallback {
+    display: flex; align-items: flex-end; gap: 12px;
   }
   .logo-wordmark {
-    font-family: Georgia, 'Times New Roman', serif; /* Bodoni MT stand-in */
-    font-size: 52px;
-    font-weight: 400;
-    letter-spacing: -1px;
-    color: var(--gray-dark);
-    line-height: 1;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 52px; font-weight: 400; letter-spacing: -1px;
+    color: var(--gray-dark); line-height: 1;
   }
-  .logo-wordmark .accent-a {
-    color: var(--red);
-  }
+  .logo-wordmark .accent-a { color: var(--red); }
   .logo-sub {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--gray-dark);
-    letter-spacing: 0.04em;
-    line-height: 1.4;
-    padding-bottom: 6px;
+    font-size: 11px; color: var(--gray-dark);
+    letter-spacing: 0.04em; line-height: 1.4; padding-bottom: 6px;
   }
-  .header-rule {
-    width: 40px;
-    height: 2px;
-    background: var(--red);
-    margin: 0 auto 14px;
-  }
+  .header-rule { width: 40px; height: 2px; background: var(--red); margin: 0 auto 14px; }
   .header h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    text-align: center;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    font-size: 20px; font-weight: 700; color: var(--text);
+    text-align: center; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 8px;
   }
-  .header p {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-align: center;
-    max-width: 460px;
-    line-height: 1.6;
-  }
+  .header p { font-size: 13px; color: var(--text-muted); text-align: center; max-width: 460px; line-height: 1.6; }
 
-  /* ── Pill nodes (start/end) ──────────────────────────────────── */
+  /* ── Pill nodes ──────────────────────────────────────────────── */
   .node-row { display: flex; justify-content: center; }
   .pill-node {
-    background: var(--red);
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 12px 32px;
-    border-radius: 2px;
-    display: inline-block;
-    box-shadow: var(--shadow-sm);
+    background: var(--red); color: var(--white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 12px 32px; border-radius: 2px; display: inline-block; box-shadow: var(--shadow-sm);
   }
-  .pill-node.end {
-    background: var(--gray-dark);
-  }
+  .pill-node.end { background: var(--gray-dark); }
   .pill-node.end .check { color: var(--red); margin-left: 6px; }
 
-  /* ── Connector ───────────────────────────────────────────────── */
+  /* ── Connectors ──────────────────────────────────────────────── */
   .connector { display: flex; flex-direction: column; align-items: center; }
   .conn-line  { width: 1px; background: var(--gray-dark); opacity: 0.4; flex-shrink: 0; }
   .conn-arrow {
     width: 0; height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid var(--gray-dark);
-    opacity: 0.5;
-    flex-shrink: 0;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 6px solid var(--gray-dark); opacity: 0.5; flex-shrink: 0;
   }
 
   /* ── Question node ───────────────────────────────────────────── */
   .q-node {
-    background: var(--white);
-    border: 1.5px solid var(--gray-dark);
-    border-radius: var(--radius);
-    padding: 14px 28px;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    margin: 0 auto;
-    max-width: 440px;
+    background: var(--white); border: 1.5px solid var(--gray-dark);
+    border-radius: var(--radius); padding: 14px 28px;
+    text-align: center; box-shadow: var(--shadow-sm); margin: 0 auto; max-width: 440px;
   }
   .q-node .q-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 5px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 5px;
   }
-  .q-node .q-text {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.3;
-  }
+  .q-node .q-text { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
 
-  /* ── Branch SVG lines ────────────────────────────────────────── */
+  /* ── Branch lines ────────────────────────────────────────────── */
   .branch-lines { height: 48px; position: relative; }
   .branch-lines svg { width: 100%; height: 100%; overflow: visible; }
 
   /* ── Branch grid ─────────────────────────────────────────────── */
-  .branch-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
+  .branch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .branch-col { display: flex; flex-direction: column; }
 
-  /* ── Track header ────────────────────────────────────────────── */
   .track-header {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 7px 6px 8px;
-    border-radius: var(--radius) var(--radius) 0 0;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: center; padding: 7px 6px 8px; border-radius: var(--radius) var(--radius) 0 0;
     border-top: 3px solid transparent;
   }
   .t-personal  .track-header { color: var(--teal);  background: var(--teal-light);  border-color: var(--teal); }
@@ -205,47 +128,24 @@
 
   /* ── Step card ───────────────────────────────────────────────── */
   .step-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 12px 30px 10px 12px;
-    cursor: pointer;
-    position: relative;
-    transition: box-shadow 0.15s, border-color 0.15s;
-    user-select: none;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px 30px 10px 12px;
+    cursor: pointer; position: relative;
+    transition: box-shadow 0.15s, border-color 0.15s; user-select: none;
   }
   .step-card:hover { box-shadow: var(--shadow-md); }
-  .step-card.active {
-    border-radius: var(--radius) var(--radius) 0 0;
-    box-shadow: var(--shadow-md);
-  }
+  .step-card.active { border-radius: var(--radius) var(--radius) 0 0; box-shadow: var(--shadow-md); }
 
-  .t-personal  .step-card:hover, .t-personal  .step-card.active { border-color: var(--teal);  }
-  .t-individual .step-card:hover, .t-individual .step-card.active { border-color: var(--navy);  }
+  .t-personal  .step-card:hover, .t-personal  .step-card.active { border-color: var(--teal); }
+  .t-individual .step-card:hover, .t-individual .step-card.active { border-color: var(--navy); }
   .t-corporate  .step-card:hover, .t-corporate  .step-card.active { border-color: var(--amber); }
   .t-social     .step-card:hover, .t-social     .step-card.active { border-color: var(--green); }
 
-  .s-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.35;
-    margin-bottom: 3px;
-  }
-  .s-sub {
-    font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.4;
-    margin-bottom: 7px;
-  }
+  .s-title { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.35; margin-bottom: 3px; }
+  .s-sub   { font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 7px; }
   .s-tag {
-    display: inline-block;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 1px;
+    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 2px 6px; border-radius: 1px;
   }
   .t-personal  .s-tag { background: var(--teal-light);  color: var(--teal);  border: 1px solid var(--teal-mid); }
   .t-individual .s-tag { background: var(--navy-light);  color: var(--navy);  border: 1px solid var(--navy-mid); }
@@ -254,26 +154,21 @@
 
   .chevron {
     position: absolute; top: 10px; right: 10px;
-    font-size: 10px; color: var(--gray-light);
-    transition: transform 0.18s;
-    line-height: 1;
+    font-size: 10px; color: var(--gray-light); transition: transform 0.18s; line-height: 1;
   }
   .step-card.active .chevron { transform: rotate(180deg); color: var(--gray-dark); }
 
-  /* ── Inline detail ───────────────────────────────────────────── */
+  /* ── Inline detail panel ─────────────────────────────────────── */
   .inline-detail {
-    display: none;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-top: none;
+    display: none; background: var(--white);
+    border: 1px solid var(--border); border-top: none;
     border-radius: 0 0 var(--radius) var(--radius);
-    padding: 12px 14px 14px;
-    animation: revealDown 0.16s ease;
+    padding: 12px 14px 14px; animation: revealDown 0.16s ease;
   }
   .inline-detail.open { display: block; }
 
-  .t-personal  .inline-detail.open { border-color: var(--teal);  }
-  .t-individual .inline-detail.open { border-color: var(--navy);  }
+  .t-personal  .inline-detail.open { border-color: var(--teal); }
+  .t-individual .inline-detail.open { border-color: var(--navy); }
   .t-corporate  .inline-detail.open { border-color: var(--amber); }
   .t-social     .inline-detail.open { border-color: var(--green); }
 
@@ -282,46 +177,52 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .d-eyebrow {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--red); margin-bottom: 4px;
-  }
-  .d-title {
-    font-size: 13px; font-weight: 700; color: var(--text);
-    margin-bottom: 6px; line-height: 1.3;
-  }
-  .d-body {
-    font-size: 11.5px; color: #555; line-height: 1.65;
-    margin-bottom: 10px;
-  }
-  .d-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+  .d-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+  .d-title   { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+  .d-body    { font-size: 11.5px; color: #555; line-height: 1.65; margin-bottom: 10px; }
+  .d-pills   { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  /* Linked pill */
   .d-pill {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
     text-transform: uppercase; padding: 3px 8px; border-radius: 1px;
-    background: var(--red-light); color: var(--red);
-    border: 1px solid var(--red-mid);
+    background: var(--red-light); color: var(--red); border: 1px solid var(--red-mid);
+    text-decoration: none; cursor: default;
+  }
+  a.d-pill { cursor: pointer; }
+  a.d-pill:hover { background: var(--red); color: white; }
+
+  /* Placeholder pill (resource coming soon) */
+  .d-pill.placeholder {
+    background: var(--placeholder-light); color: var(--placeholder);
+    border-color: var(--placeholder-mid); cursor: default;
+    font-style: italic; letter-spacing: 0;
+    text-transform: none; font-weight: 400; font-size: 10px;
+  }
+
+  /* Inline note (used instead of pill for case-by-case text) */
+  .d-note {
+    font-size: 11px; color: var(--text-muted); font-style: italic;
+    border-left: 2px solid var(--gray-light); padding-left: 8px;
+    margin-top: 6px; line-height: 1.5;
   }
 
   /* ── Col connector ───────────────────────────────────────────── */
   .col-conn { display: flex; justify-content: center; height: 18px; align-items: center; }
   .col-conn-line { width: 1px; height: 100%; background: var(--gray-dark); opacity: 0.3; }
 
-  /* ── Converge lines ──────────────────────────────────────────── */
+  /* ── Converge ────────────────────────────────────────────────── */
   .converge { height: 44px; position: relative; }
   .converge svg { width: 100%; height: 100%; overflow: visible; }
 
   /* ── Closing steps ───────────────────────────────────────────── */
   .closing { display: flex; flex-direction: column; align-items: center; max-width: 480px; margin: 0 auto; }
-
   .close-card {
-    width: 100%; background: var(--white);
-    border: 1px solid var(--red-mid);
-    border-radius: var(--radius);
-    padding: 14px 44px 14px 18px;
+    width: 100%; background: var(--white); border: 1px solid var(--red-mid);
+    border-radius: var(--radius); padding: 14px 44px 14px 18px;
     display: flex; align-items: flex-start; gap: 12px;
     box-shadow: var(--shadow-sm); cursor: pointer;
-    transition: box-shadow 0.15s, border-color 0.15s; user-select: none;
-    position: relative;
+    transition: box-shadow 0.15s, border-color 0.15s; user-select: none; position: relative;
   }
   .close-card:hover { box-shadow: var(--shadow-md); border-color: var(--red); }
   .close-card.active { border-color: var(--red); border-radius: var(--radius) var(--radius) 0 0; box-shadow: var(--shadow-md); }
@@ -330,66 +231,52 @@
     font-size: 10px; color: var(--gray-light); transition: transform 0.18s;
   }
   .close-card.active .c-chevron { transform: rotate(180deg); color: var(--gray-dark); }
-
   .c-num {
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--red); color: white;
-    font-size: 12px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
+    width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: white;
+    font-size: 12px; font-weight: 700; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; margin-top: 1px;
   }
   .c-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
   .c-sub   { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
-
   .close-inline {
-    display: none; width: 100%;
-    background: var(--white);
+    display: none; width: 100%; background: var(--white);
     border: 1px solid var(--red); border-top: none;
     border-radius: 0 0 var(--radius) var(--radius);
-    padding: 12px 18px 16px;
-    animation: revealDown 0.16s ease;
+    padding: 12px 18px 16px; animation: revealDown 0.16s ease;
   }
   .close-inline.open { display: block; }
 
   /* ── Legend ──────────────────────────────────────────────────── */
   .legend {
     display: flex; justify-content: center; flex-wrap: wrap;
-    gap: 18px; margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    gap: 18px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
   }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--text-muted); }
   .legend-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
-  .hint-text {
-    text-align: center; font-size: 11px; color: var(--text-muted);
-    margin-bottom: 14px; font-style: italic;
-  }
+  .hint-text { text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 14px; font-style: italic; }
 
   @media (max-width: 640px) {
     .branch-row { grid-template-columns: repeat(2, 1fr); }
     .logo-wordmark { font-size: 40px; }
   }
-  @media (max-width: 400px) {
-    .branch-row { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 400px) { .branch-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- ── HEADER ──────────────────────────────────────────────────── -->
+  <!-- ── HEADER ──────────────────────────────────────────────── -->
   <div class="header">
-    <div class="naaap-logo">
-      <div class="logo-wordmark">NA<span class="accent-a">A</span>AP</div>
-      <div class="logo-sub">National Association of<br>Asian American Professionals</div>
+    <div class="logo-area">
+      <img src="data:image/png;base64,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" alt="NAAAP Logo">
     </div>
     <div class="header-rule"></div>
     <h1>Board Member Fundraising Guide</h1>
     <p>Follow the path that matches your fundraising action.<br>Click any card to see the resources you'll need.</p>
   </div>
 
-  <!-- ── START ───────────────────────────────────────────────────── -->
+  <!-- ── START ─────────────────────────────────────────────────── -->
   <div class="node-row">
     <div class="pill-node">I want to fulfill my Give or Get</div>
   </div>
@@ -399,13 +286,12 @@
     <div class="conn-arrow"></div>
   </div>
 
-  <!-- ── QUESTION ────────────────────────────────────────────────── -->
+  <!-- ── QUESTION ──────────────────────────────────────────────── -->
   <div class="q-node">
     <div class="q-label">Step 1 — Choose your path</div>
     <div class="q-text">What type of fundraising action am I taking?</div>
   </div>
 
-  <!-- Branch spread lines -->
   <div class="branch-lines">
     <svg viewBox="0 0 940 48" preserveAspectRatio="none">
       <line x1="470" y1="0" x2="470" y2="48" stroke="#808284" stroke-width="1" opacity="0.4"/>
@@ -419,10 +305,10 @@
 
   <p class="hint-text">Click any card to expand details and see which resources to use</p>
 
-  <!-- ── BRANCH ROW ──────────────────────────────────────────────── -->
+  <!-- ── BRANCH ROW ─────────────────────────────────────────────── -->
   <div class="branch-row">
 
-    <!-- COLUMN 1: Personal Gift -->
+    <!-- ── COL 1: Personal Gift ──────────────────────────────────── -->
     <div class="branch-col t-personal">
       <div class="track-header">Personal Gift</div>
 
@@ -437,8 +323,7 @@
         <div class="d-title">Make your gift via DonorBox</div>
         <div class="d-body">Every board member has a unique DonorBox link that tracks donations to your name. Use this link when making your own gift so it's properly attributed toward your Give or Get target. You can also share it in your email signature, LinkedIn bio, or personal outreach.</div>
         <div class="d-pills">
-          <span class="d-pill">Personal DonorBox link</span>
-          <span class="d-pill">QR code</span>
+          <a class="d-pill" href="https://docs.google.com/document/d/1T3L4PZgMSecQ8WBG-DyDzZXjhx9rhu6uIYefE3YdH4A/edit?usp=sharing" target="_blank">Personal DonorBox link</a>
         </div>
       </div>
 
@@ -447,7 +332,7 @@
       <div class="step-card" onclick="toggleCard(this,'p2')">
         <span class="chevron">▾</span>
         <div class="s-title">Share tax deductibility info</div>
-        <div class="s-sub">EIN + IRS letter for your records</div>
+        <div class="s-sub">IRS letter &amp; EIN for donor records</div>
         <span class="s-tag">Tax one-pager</span>
       </div>
       <div class="inline-detail" id="p2">
@@ -455,14 +340,12 @@
         <div class="d-title">Tax deductibility information</div>
         <div class="d-body">NAAAP is a registered 501(c)(3) nonprofit. Donors — including board members making personal gifts — may deduct their contribution from federal taxes. Keep NAAAP's EIN and IRS determination letter on hand for your records and to share with any donor who asks.</div>
         <div class="d-pills">
-          <span class="d-pill">Tax deductibility one-pager</span>
-          <span class="d-pill">IRS determination letter</span>
-          <span class="d-pill">NAAAP EIN</span>
+          <span class="d-pill placeholder">⏳ Tax deductibility one-pager — coming soon</span>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 2: Individual Ask -->
+    <!-- ── COL 2: Individual Ask ──────────────────────────────────── -->
     <div class="branch-col t-individual">
       <div class="track-header">Ask an Individual</div>
 
@@ -477,9 +360,9 @@
         <div class="d-title">Elevator pitch &amp; general one-pager</div>
         <div class="d-body">The most effective individual asks are personal. Lead with your own story — why you joined NAAAP, what it's meant to your career or community. The talking points guide gives you a flexible script, and the one-pager is a clean leave-behind to send after the conversation.</div>
         <div class="d-pills">
-          <span class="d-pill">Elevator pitch / talking points</span>
-          <span class="d-pill">NAAAP general one-pager</span>
-          <span class="d-pill">Impact report</span>
+          <span class="d-pill placeholder">⏳ Elevator pitch / talking points — coming soon</span>
+          <a class="d-pill" href="https://drive.google.com/file/d/1PT2a6do-Dd0-USNoNYT3BVpZ9aHT2ztX/view?usp=sharing" target="_blank">About NAAAP overview</a>
+          <span class="d-pill placeholder">⏳ Impact report — coming soon</span>
         </div>
       </div>
 
@@ -496,8 +379,8 @@
         <div class="d-title">Senior Advisory Council pitch deck</div>
         <div class="d-body">For high-capacity individuals who might give at a leadership level or take on an advisory role, the SAC deck frames NAAAP as an organization worth sustained, senior investment. Use this for executives, community leaders, or anyone you'd describe as a "major donor."</div>
         <div class="d-pills">
-          <span class="d-pill">SAC pitch deck</span>
-          <span class="d-pill">NAAAP general one-pager</span>
+          <a class="d-pill" href="https://canva.link/wap1ptuuu2dang0" target="_blank">SAC pitch deck (customizable)</a>
+          <a class="d-pill" href="https://drive.google.com/file/d/1PT2a6do-Dd0-USNoNYT3BVpZ9aHT2ztX/view?usp=sharing" target="_blank">About NAAAP overview</a>
         </div>
       </div>
 
@@ -514,14 +397,14 @@
         <div class="d-title">Share your DonorBox link</div>
         <div class="d-body">Within 48 hours of your conversation, send a follow-up email with your personal DonorBox link, the one-pager attached, and a note about tax deductibility. Encourage the donor to check if their employer offers gift matching — it can double the impact at no extra cost to them.</div>
         <div class="d-pills">
-          <span class="d-pill">Personal DonorBox link</span>
-          <span class="d-pill">Gift acknowledgment template</span>
-          <span class="d-pill">Tax deductibility one-pager</span>
+          <a class="d-pill" href="https://docs.google.com/document/d/1T3L4PZgMSecQ8WBG-DyDzZXjhx9rhu6uIYefE3YdH4A/edit?usp=sharing" target="_blank">Personal DonorBox link</a>
+          <span class="d-pill placeholder">⏳ Gift acknowledgment template — coming soon</span>
+          <span class="d-pill placeholder">⏳ Tax deductibility one-pager — coming soon</span>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 3: Corporate Sponsor -->
+    <!-- ── COL 3: Corporate Sponsor ───────────────────────────────── -->
     <div class="branch-col t-corporate">
       <div class="track-header">Corporate Sponsor</div>
 
@@ -534,11 +417,11 @@
       <div class="inline-detail" id="c1">
         <div class="d-eyebrow">Corporate Sponsor</div>
         <div class="d-title">Sponsorship prospectus &amp; pitch deck</div>
-        <div class="d-body">The prospectus outlines NAAAP's sponsorship tiers, pricing, and benefits in detail. Use it as the leave-behind. The pitch deck is designed for a live presentation leading with NAAAP's reach and API-focused brand visibility. Get prior approval from NAAAP before approaching any specific company.</div>
+        <div class="d-body">The prospectus outlines NAAAP's sponsorship tiers, pricing, and benefits in detail. Use it as the leave-behind. The pitch deck is designed for a live presentation leading with NAAAP's reach and API-focused brand visibility. Please check with a NAAAP team member before approaching any specific company to ensure there's not duplication of efforts.</div>
         <div class="d-pills">
-          <span class="d-pill">Sponsorship prospectus</span>
-          <span class="d-pill">Sponsorship pitch deck</span>
-          <span class="d-pill">NAAAP media kit</span>
+          <a class="d-pill" href="https://drive.google.com/file/d/1Dy2-KUN06-i9yC4S9lsXRoEcBU3A7HQS/view?usp=sharing" target="_blank">Sponsorship prospectus</a>
+          <a class="d-pill" href="https://canva.link/ou2ltphfu0fn133" target="_blank">Corporate pitch deck (customizable)</a>
+          <a class="d-pill" href="https://drive.google.com/file/d/1PT2a6do-Dd0-USNoNYT3BVpZ9aHT2ztX/view?usp=sharing" target="_blank">About NAAAP overview</a>
         </div>
       </div>
 
@@ -546,40 +429,36 @@
 
       <div class="step-card" onclick="toggleCard(this,'c2')">
         <span class="chevron">▾</span>
-        <div class="s-title">Sponsor commits? Use agreement</div>
-        <div class="s-sub">Execute agreement + follow the checklist</div>
-        <span class="s-tag">Sponsorship agreement</span>
+        <div class="s-title">Sponsor commits? Contact the team</div>
+        <div class="s-sub">Loop in NAAAP Sponsorship Team</div>
+        <span class="s-tag">Sponsorship team</span>
       </div>
       <div class="inline-detail" id="c2">
         <div class="d-eyebrow">Corporate Sponsor</div>
         <div class="d-title">Sponsorship agreement &amp; checklist</div>
-        <div class="d-body">Once a sponsor is ready to commit, bring in your NAAAP point of contact to finalize the agreement. The execution checklist walks through every step from signed agreement to payment receipt. All funds must be directed into a NAAAP-managed account.</div>
-        <div class="d-pills">
-          <span class="d-pill">Sponsorship agreement template</span>
-          <span class="d-pill">Execution checklist</span>
-        </div>
+        <div class="d-body">Once a sponsor is ready to commit, bring in a NAAAP Sponsorship Team member to finalize the agreement and collect payment. This team member will work with the sponsor directly to handle the paperwork and administrative side of things.</div>
+        <div class="d-note">Sponsorship agreements are handled case-by-case by the National Administration team once a sponsor has been verbally secured.</div>
       </div>
 
       <div class="col-conn"><div class="col-conn-line"></div></div>
 
       <div class="step-card" onclick="toggleCard(this,'c3')">
         <span class="chevron">▾</span>
-        <div class="s-title">Leave the one-page summary</div>
-        <div class="s-sub">Concise leave-behind for follow-ups</div>
+        <div class="s-title">Share the impact one-pager</div>
+        <div class="s-sub">What do funds go towards?</div>
         <span class="s-tag">One-pager</span>
       </div>
       <div class="inline-detail" id="c3">
         <div class="d-eyebrow">Corporate Sponsor</div>
-        <div class="d-title">One-page sponsorship summary</div>
-        <div class="d-body">For quick conversations or email introductions where the full prospectus feels like too much — the one-page summary gives a concise snapshot of who NAAAP is and what sponsorship looks like. It's a warm first touch, not a closing document.</div>
+        <div class="d-title">What do funds go towards? One-pager</div>
+        <div class="d-body">For quick conversations or email introductions where the full prospectus feels like too much — the one-page summary gives a concise snapshot of who NAAAP is and what sponsorship looks like.</div>
         <div class="d-pills">
-          <span class="d-pill">Sponsorship one-page summary</span>
-          <span class="d-pill">NAAAP general one-pager</span>
+          <a class="d-pill" href="https://drive.google.com/file/d/1E3prA6ihem34_5VPga5pCUdt3rhYVUGs/view?usp=sharing" target="_blank">What do funds go towards? one-pager</a>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 4: Social / Awareness -->
+    <!-- ── COL 4: Social / Awareness ──────────────────────────────── -->
     <div class="branch-col t-social">
       <div class="track-header">Social &amp; Awareness</div>
 
@@ -592,11 +471,9 @@
       <div class="inline-detail" id="s1">
         <div class="d-eyebrow">Social &amp; Awareness</div>
         <div class="d-title">Brand &amp; graphics folder</div>
-        <div class="d-body">The media kit includes approved logos, photo assets, and pre-formatted social post templates for LinkedIn, Instagram, and email. Always use approved graphics — do not create your own branded assets without checking with staff. The folder is organized by platform and use case.</div>
+        <div class="d-body">The media kit includes approved logos, photo assets, and pre-formatted social post templates for LinkedIn, Instagram, and email. Please always use approved graphics to maintain our brand. The folder is organized by platform and use case.</div>
         <div class="d-pills">
-          <span class="d-pill">Brand &amp; graphics folder</span>
-          <span class="d-pill">NAAAP media kit</span>
-          <span class="d-pill">Social post templates</span>
+          <span class="d-pill placeholder">⏳ Brand &amp; graphics folder — coming soon</span>
         </div>
       </div>
 
@@ -613,8 +490,7 @@
         <div class="d-title">Amplification calendar</div>
         <div class="d-body">Key dates include: Giving Tuesday (first Tuesday after Thanksgiving), Asian Pacific American Heritage Month (all of May), NAAAP's founding anniversary, your chapter's birthday, and year-end giving season (mid-November through Dec 31). Plan your posts around these windows for maximum engagement.</div>
         <div class="d-pills">
-          <span class="d-pill">Fundraising amplification calendar</span>
-          <span class="d-pill">Key dates &amp; campaign schedule</span>
+          <span class="d-pill placeholder">⏳ Fundraising amplification calendar — coming soon</span>
         </div>
       </div>
 
@@ -631,9 +507,8 @@
         <div class="d-title">Caption templates &amp; QR code</div>
         <div class="d-body">Pre-written captions are paired with each graphic in the templates folder. Personalize them slightly — add your own voice or a sentence about why you're involved — before posting. Always include your personal DonorBox QR code or link so followers can give directly from your post.</div>
         <div class="d-pills">
-          <span class="d-pill">Caption templates</span>
-          <span class="d-pill">Personal QR code</span>
-          <span class="d-pill">Personal DonorBox link</span>
+          <span class="d-pill placeholder">⏳ Caption templates — coming soon</span>
+          <a class="d-pill" href="https://docs.google.com/document/d/1T3L4PZgMSecQ8WBG-DyDzZXjhx9rhu6uIYefE3YdH4A/edit?usp=sharing" target="_blank">Personal DonorBox link</a>
         </div>
       </div>
     </div>
@@ -652,7 +527,7 @@
     </svg>
   </div>
 
-  <!-- ── CLOSING STEPS ────────────────────────────────────────────── -->
+  <!-- ── CLOSING STEPS ──────────────────────────────────────────── -->
   <div class="closing">
     <div class="connector" style="height:10px"><div class="conn-arrow"></div></div>
 
@@ -660,17 +535,16 @@
       <span class="c-chevron">▾</span>
       <div class="c-num">1</div>
       <div>
-        <div class="c-title">Log all activity in the CRM</div>
-        <div class="c-sub">Record every contact, outcome, and pipeline update — even if the answer was "not now."</div>
+        <div class="c-title">Coordinate outreach with NAAAP Sponsorship Team</div>
+        <div class="c-sub">Track contacts and keep the team in the loop — even a "not now" is worth logging.</div>
       </div>
     </div>
     <div class="close-inline" id="cl1">
       <div class="d-eyebrow">Reporting</div>
-      <div class="d-title">Log all activity in the CRM</div>
-      <div class="d-body">Every contact, every conversation, every outcome — yes or no — should be logged. A "not now" this month can become a "yes" by Giving Tuesday. The CRM also ensures NAAAP staff aren't duplicating your outreach. Submit your monthly pipeline report on schedule.</div>
+      <div class="d-title">Coordinate outreach with NAAAP Sponsorship Team</div>
+      <div class="d-body">NAAAP keeps track of outreach so we can ensure we're not duplicating outreach and for future follow-ups — a "not now" this month can become a "yes" later in the year! We will coordinate outreach via email and planning documents.</div>
       <div class="d-pills">
-        <span class="d-pill">CRM entry instructions</span>
-        <span class="d-pill">Monthly pipeline report template</span>
+        <span class="d-pill placeholder">⏳ Fundraising worksheet — coming soon</span>
       </div>
     </div>
 
@@ -683,18 +557,14 @@
       <span class="c-chevron">▾</span>
       <div class="c-num">2</div>
       <div>
-        <div class="c-title">Notify your NAAAP point of contact</div>
-        <div class="c-sub">Report funds raised, connections made, and any sponsor commitments requiring staff follow-up.</div>
+        <div class="c-title">Notify the Sponsorship Team</div>
+        <div class="c-sub">Report funds raised, connections made, and any sponsor commitments.</div>
       </div>
     </div>
     <div class="close-inline" id="cl2">
       <div class="d-eyebrow">Reporting</div>
-      <div class="d-title">Notify your NAAAP point of contact</div>
-      <div class="d-body">Let your designated NAAAP staff or volunteer contact know about any funds raised, sponsor commitments, or significant connections made. Any raised funds must be directed into NAAAP's managed bank account promptly. If a sponsor has committed, loop in staff right away to handle the agreement and payment.</div>
-      <div class="d-pills">
-        <span class="d-pill">NAAAP point of contact directory</span>
-        <span class="d-pill">Gift acknowledgment template</span>
-      </div>
+      <div class="d-title">Notify the Sponsorship Team</div>
+      <div class="d-body">Let the Sponsorship Team know about any funds raised, sponsor commitments, or significant connections made. If a sponsor has committed, loop in staff right away to handle the agreement and payment. You can always get a hold of a team member by contacting <a href="mailto:sponsor@naaap.org" style="color:var(--red);">sponsor@naaap.org</a>.</div>
     </div>
 
     <div class="connector" style="height:26px">
@@ -707,7 +577,7 @@
     </div>
   </div>
 
-  <!-- ── LEGEND ───────────────────────────────────────────────────── -->
+  <!-- ── LEGEND ─────────────────────────────────────────────────── -->
   <div class="legend">
     <div class="legend-item"><div class="legend-swatch" style="background:var(--teal)"></div>Personal gift</div>
     <div class="legend-item"><div class="legend-swatch" style="background:var(--navy)"></div>Individual ask</div>
@@ -716,7 +586,7 @@
     <div class="legend-item"><div class="legend-swatch" style="background:var(--red)"></div>Reporting &amp; close</div>
   </div>
 
-</div><!-- .page -->
+</div>
 
 <script>
   function toggleCard(card, id) {
